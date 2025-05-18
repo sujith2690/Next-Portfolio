@@ -17,7 +17,7 @@
   --color-sidebar: var(--sidebar);
   --color-chart-5: var(--chart-5);
   --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);  
+  --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
@@ -45,7 +45,7 @@
 :root {
   /* // Used themes  */
   --primary: oklch(0.23 0.0115 285.46);
-  --accent:oklch(0.88 0.2134 155.95);
+  --accent: oklch(0.88 0.2134 155.95);
   --accent-h: oklch(0.71 0.1697 26.05);
   --accente: oklch(0.71 0.1697 26.05);
 
@@ -120,19 +120,35 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-primary  text-white leading-loose ;
+    @apply bg-primary text-white leading-loose;
   }
+
   /* .container{
     @apply  p-[15px];
   } */
-  .h1{
+  .h1 {
     @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
   }
-  .h2{
+
+  .h2 {
     @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
   }
-  .h3{
+
+  .h3 {
     @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
-  } 
+  }
+
+  .text-outline {
+    -webkit-text-stroke: 1px #ffffff;
+  }
+
+  .text-outline-hover {
+    -webkit-text-stroke: 1px #00ff99;
+  }
+  
+  .group:hover .text-outline {
+    -webkit-text-stroke: 1px #00ff99;
+  }
 }

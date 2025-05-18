@@ -35,7 +35,7 @@ const Photo = () => {
                         alt=''
                         className='object-contain rounded-full'
                     />
-                    <div className="absolute inset-0 bg-black/10 rounded-full"></div>
+                    <div className="absolute inset-0 bg-black/30 rounded-full"></div>
                 </motion.div>
 
                 {/* ✅ (2, 3) SVG sizes matched exactly */}
