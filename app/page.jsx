@@ -1,5 +1,6 @@
 import Photo from "@/components/Photo"
 import Social from "@/components/Social"
+import Status from "@/components/Status"
 import { Button } from "@/components/ui/button"
 import { FiDownload } from "react-icons/fi"
 
@@ -19,11 +20,11 @@ const Home = () => {
               I am proficient in various programming languages and technologies.
             </p>
             {/* Button for social */}
-            <div className="flex flex-col xl:flex-row items-center gap-2">
+            <div className="flex flex-col xl:flex-row items-center gap-6">
               <Button
                 variant='outline'
                 size='lg'
-                className='uppercase flex items-center gap-2' >
+                className='uppercase flex items-center gap-2 cursor-pointer' >
                 <span>Download CV</span>
                 <FiDownload />
               </Button>
@@ -39,6 +40,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Status />
     </section>
   )
 }
