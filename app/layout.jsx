@@ -2,9 +2,8 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 // components
-import Header from "@/components/Header";
-import PageTransition from "@/components/PageTransition";
-import StairTransition from "@/components/StairTransition";
+
+import ClientLayout from "./ClientLayout";
 
 
 const jetbrainsMono = JetBrains_Mono({
@@ -21,14 +20,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${jetbrainsMono.className}  antialiased`}>
-        <Header />
-        <StairTransition />
-        <PageTransition>
+    <html lang="en" className={jetbrainsMono.className} suppressHydrationWarning>
+      <body className="antialiased">
+        <ClientLayout>
           {children}
-        </PageTransition>
+        </ClientLayout>
       </body>
     </html>
   );
