@@ -125,9 +125,9 @@
     @apply bg-primary text-white leading-loose;
   }
 
-  /* .container{
+  .container{
     @apply  p-[15px];
-  } */
+  }
   .h1 {
     @apply text-[48px] xl:text-[80px] leading-[1.1] font-semibold;
   }
