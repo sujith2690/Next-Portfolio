@@ -164,15 +164,6 @@ const Work = () => {
                 </div>
             </div>
         </motion.div>
-
-        // <motion.div
-        //     initial={{ opacity: 0 }}
-        //     animate={{ opacity: 1 }}
-        //     className="min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 "
-        // >
-        //     {project.num}
-        // </motion.div>
-
     )
 }
 
