@@ -7,34 +7,34 @@ import { motion } from 'framer-motion'
 const services = [
     {
         num: '01',
-        title: 'Web Development',
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium, neque eos aliquam quidem delectus perspiciatis.',
-        href: ''
+        title: 'Full Stack Web Development',
+        description: 'build end-to-end web applications using the MERN stack and Next.js, delivering scalable, secure, and high-performance solutions.',
+        href: '/contact'
     },
     {
         num: '02',
-        title: 'UI/UX Design',
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium, neque eos aliquam quidem delectus perspiciatis.',
-        href: ''
+        title: 'Frontend Development',
+        description: 'fast, responsive, and modern UIs using React and Tailwind CSS, focusing on great UX and cross-device compatibility.',
+        href: '/contact'
     },
     {
         num: '03',
-        title: 'Logo Design',
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium, neque eos aliquam quidem delectus perspiciatis.',
-        href: ''
+        title: 'AI Feature Integration',
+        description: 'Integrate AI tools like OpenAI and Google APIs to add smart features such as chatbots, reminders, and content generation.',
+        href: '/contact'
     },
     {
         num: '04',
-        title: 'SEO',
-        description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium, neque eos aliquam quidem delectus perspiciatis.',
-        href: ''
+        title: 'Real-time Features & Notifications',
+        description: 'Development of real-time functionalities like live chat, instant alerts, and dynamic updates using WebSockets and Socket.IO for enhanced user interaction.',
+        href: '/contact'
     },
 ]
 
 const Services = () => {
 
     return (
-        <section className='min-h-[80vh] flex flex-col justify-center py-12 xl:py-0 '>
+        <section className=' flex flex-col justify-center py-12 xl:py-0 '>
             <div className="container mx-auto p-2">
                 <motion.div initial={{ opacity: 0 }} animate={{
                     opacity: 1, transition: {

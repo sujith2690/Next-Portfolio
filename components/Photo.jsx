@@ -28,14 +28,14 @@ const Photo = () => {
                     className='w-[268px] h-[268px] xl:w-[468px] xl:h-[468px] rounded-full absolute z-10'
                 >
                     <Image
-                        src={'/assets/new12.png'}
+                        src={'/assets/f2.jpg'}
                         priority
                         quality={100}
                         fill
                         alt=''
                         className='object-contain rounded-full'
                     />
-                    <div className="absolute inset-0 bg-black/30 rounded-full"></div>
+                    <div className="absolute inset-0 bg-black/10 rounded-full"></div>
                 </motion.div>
 
                 {/* ✅ (2, 3) SVG sizes matched exactly */}

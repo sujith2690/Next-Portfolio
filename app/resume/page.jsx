@@ -5,8 +5,8 @@ import { SiTailwindcss, SiNextdotjs, } from 'react-icons/si'
 
 const about = {
     title: "About Me",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro amet eum, nisi sint tempora recusandae inventore et.",
-    info: [
+    desc: "I’m a self-taught Full Stack Developer passionate about building modern web applications that are fast, responsive, and user-focused. With hands-on experience across real-world projects, I thrive on turning ideas into impactful digital experiences using tools like React, Node.js, and Next.js."
+    , info: [
         {
             fieldName: "Name",
             fieldValue: "Sujith"
@@ -29,9 +29,8 @@ const about = {
         },
         {
             fieldName: "Email",
-            fieldValue: "sujithp2690@gmail.com"
+            fieldValue: "sujithworks369@gmail.com"
         },
-
         {
             fieldName: "Languages",
             fieldValue: "English, Hindi, Malayalam"
@@ -42,7 +41,7 @@ const about = {
 const experience = {
     icon: '/assets/resume/badge.svg',
     title: "My Experience",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro amet eum, nisi sint tempora recusandae inventore et.",
+    desc: "A journey shaped by hands-on experience in dynamic tech environments. From building scalable full stack applications at Ameya360 to honing advanced development skills at Brototype, each role has contributed to my growth as a versatile and efficient developer.",
     items: [
         {
             company: "Ameya360",
@@ -52,7 +51,7 @@ const experience = {
         {
             company: "Brototype",
             position: "Full Stack Developer",
-            duration: "2022-2023"
+            duration: "2024-2025"
         },
     ]
 
@@ -60,12 +59,12 @@ const experience = {
 const education = {
     icon: '/assets/resume/cap.svg',
     title: "My Education",
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro amet eum, nisi sint tempora recusandae inventore et.",
-    items: [
+    desc: "My educational foundation is rooted in practical, project-based learning. The immersive full stack training at Brototype equipped me with real-world development skills, while my earlier academic exposure laid the groundwork for my analytical and problem-solving abilities."
+    , items: [
         {
             institution: "Brototype",
             degree: "Full Stack Developer",
-            duration: "2022-2023"
+            duration: "2024-2025"
         },
         {
             institution: "CUIET",
@@ -78,8 +77,8 @@ const education = {
 
 const skills = {
     title: 'My Skills',
-    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro amet eum, nisi sint tempora recusandae inventore et.",
-    skillList: [
+    desc: "A solid mix of front-end and back-end technologies fuels my development workflow. From crafting responsive UIs with HTML, CSS, React, and Tailwind to building scalable applications using Node.js and Next.js, I bring both design sensitivity and technical depth to every project."
+    , skillList: [
         {
             icons: <FaHtml5 />,
             name: 'html 5',

@@ -16,16 +16,18 @@ const Home = () => {
               Hello I'm <br /><p className="text-accent ">Sujith <span className="xl:text-[80px]  md:text-[48px] text-[32px] ">Poonthottathil</span></p>
             </h1>
             <p className="max-w-[500px] mb-9 text-white/80 ">
-              I excel at crafting elegant digital experience and
-              I am proficient in various programming languages and technologies.
+              Excel at crafting elegant digital experience and proficient in various programming languages and technologies.
             </p>
             {/* Button for social */}
             <div className="flex flex-col xl:flex-row items-center gap-6">
               <Button
                 variant='outline'
                 size='lg'
-                className='uppercase flex items-center gap-2 cursor-pointer' >
-                <span>Download CV</span>
+                className='uppercase flex items-center gap-2 cursor-pointer'
+              >
+                <a href="/assets/Sujith Full Stack ( MERN ) Developer Resume.pdf" download>
+                  <span>Download CV</span>
+                </a>
                 <FiDownload />
               </Button>
               <div className="mb-8 xl:mb-0">
@@ -39,8 +41,8 @@ const Home = () => {
             <Photo />
           </div>
         </div>
+        <Status />
       </div>
-      <Status />
     </section>
   )
 }

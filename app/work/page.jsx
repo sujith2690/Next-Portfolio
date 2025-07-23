@@ -15,38 +15,61 @@ const Projects = [
     {
         num: "01",
         category: "fullstack",
-        title: "project 1",
-        description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptatem aperiam explicabo voluptates sapiente",
+        title: "SocialMe – Full Stack Social Media App",
+        description: "SocialMe is a personal project showcasing full-stack development, where users can post updates, comment, like, and manage their own profile and preferences. Real-time functionalities like live chat, instant alerts, and dynamic updates using WebSockets and Socket.IO for enhanced user interaction.",
         stack: [
-            { name: "React" }, { name: "Css 3" }, { name: "JavaScript" }
+            { name: "React" }, { name: "Css 3" },
+            { name: "Node.js" },
+            { name: "JavaScript" },
+            { name: "MongoDB" },
+            { name: "Socket.IO" },
+            { name: "Google Authentication" },
         ],
         image: '/assets/work/SocialME.png',
-        live: "",
-        github: ""
+        live: "https://socialmeconnects.netlify.app/login",
+        github: "https://github.com/sujith2690/SocialMedia-SocialME"
     },
     {
         num: "02",
         category: "fullstack",
-        title: "project 2",
-        description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptatem aperiam explicabo voluptates sapiente",
+        title: "AmazeMen – Men’s Grooming E-commerce Platform",
+        description: "AmazeMen is a full-stack e-commerce web application designed for modern men's grooming products. It offers both a polished user shopping experience and a robust admin dashboard for managing products, orders, and users. Built to reflect real-world D2C brand functionality, it demonstrates strong full-stack and UI/UX skills.",
         stack: [
-            { name: "handlebars" }, { name: "Css 3" }, { name: "Node.js" }
+            { name: "handlebars" }, { name: "Css 3" }, { name: "Node.js" },{ name: "Twilio" },
         ],
         image: '/assets/work/Amaze.png',
-        live: "",
-        github: ""
+        live: "https://amazemen.onrender.com/",
+        github: "https://github.com/sujith2690/AMAZE"
     },
     {
         num: "03",
         category: "fullstack",
-        title: "project 3",
-        description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus voluptatem aperiam explicabo voluptates sapiente",
+        title: "Destiny – Smart Travel Booking Platform",
+        description: "Destiny is a full-stack travel booking application where users can search, explore, and book travel experiences. It includes a streamlined user interface and efficient backend for booking management.",
         stack: [
-            { name: "React" }, { name: "Tailwind.css" }, { name: "JavaScript" }
+            { name: "React" }, { name: "Tailwind.css" }, 
+            { name: "Node.js" },
+            { name: "MySql" },
+            { name: "JavaScript" },
+        ],
+        image: '/assets/work/destinyHome.png',
+        live: "https://destinytravels.netlify.app/",
+        github: "https://github.com/sujith2690/Destiny-Client"
+    },
+    {
+        num: "04",
+        category: "fullstack",
+        title: "BrowseBooks – Online Book Discovery & Reading Platform",
+        description: "BrowseBooks is a modern web application designed to help users discover, explore, and keep track of their favorite books. It mimics the experience of a digital library and reading platform, making it ideal for book lovers, students, or casual readers. Users can browse by category, read summaries, save favorites, and manage their own reading lists.",
+        stack: [
+            { name: "React" }, { name: "Tailwind.css" }, 
+            { name: "Node.js" },
+            { name: "MongoDB" },
+            { name: "JavaScript" },
         ],
         image: '/assets/work/browsBooks.png',
-        live: "",
-        github: ""
+        live: "https://browsbooks.netlify.app/",
+        github: "https://github.com/sujith2690/Browse-books-Client"
     },
 ]
 
@@ -79,6 +102,7 @@ const Work = () => {
                                 {project.num}
                             </div>
                             <h2 className="text-[42px] font-bold leading-none text-white group-hover:text-accent transition-all duration-500 capitalize " >{project.category} project</h2>
+                            <p className="text-white/60 " >{project.title}</p>
                             <p className="text-white/60 " >{project.description}</p>
                             <ul className="flex gap-4 flex-wrap  " >
                                 {
@@ -98,7 +122,8 @@ const Work = () => {
                             {/* button */}
                             <div className="flex gap-4" >
                                 {/* live project button */}
-                                <Link href={project.live} >
+                                <a target={'_blank'} href={project.live} >
+                                    {/* <Link href={project.live} > */}
                                     <TooltipProvider delayDuration={100} >
                                         <Tooltip>
                                             <TooltipTrigger className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group' >
@@ -109,9 +134,11 @@ const Work = () => {
                                             </TooltipContent>
                                         </Tooltip>
                                     </TooltipProvider>
-                                </Link>
+                                    {/* </Link> */}
+                                </a>
                                 {/* github */}
-                                <Link href={project.github} >
+                                <a target={'_blank'} href={project.github} >
+                                    {/* <Link href={project.github} > */}
                                     <TooltipProvider delayDuration={100} >
                                         <Tooltip>
                                             <TooltipTrigger className='w-[70px] h-[70px] rounded-full bg-white/5 flex justify-center items-center group' >
@@ -122,7 +149,8 @@ const Work = () => {
                                             </TooltipContent>
                                         </Tooltip>
                                     </TooltipProvider>
-                                </Link>
+                                    {/* </Link> */}
+                                </a>
                             </div>
 
 
