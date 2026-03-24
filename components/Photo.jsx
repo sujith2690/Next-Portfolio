@@ -25,7 +25,7 @@ const Photo = () => {
                         }
                     }}
                     // className='w-[298px] h-[298px] xl:w-[498px] xl:h-[498px] rounded-full absolute z-10'
-                    className='w-[268px] h-[268px] xl:w-[468px] xl:h-[468px] rounded-full absolute z-10'
+                    className='w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] xl:w-[430px] xl:h-[430px] rounded-full absolute z-10'
                 >
                     <Image
                         src={'/assets/f2.jpg'}
@@ -40,7 +40,7 @@ const Photo = () => {
 
                 {/* ✅ (2, 3) SVG sizes matched exactly */}
                 <motion.svg
-                    className='w-[298px] h-[298px] xl:w-[498px] xl:h-[498px]'
+                    className='w-[220px] h-[220px] sm:w-[280px] sm:h-[280px] xl:w-[450px] xl:h-[450px]'
                     fill="transparent"
                     viewBox="0 0 506 506"
                     xmlns='http://www.w3.org/2000/svg'
