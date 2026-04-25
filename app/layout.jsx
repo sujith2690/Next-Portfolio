@@ -21,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={jetbrainsMono.className} suppressHydrationWarning>
-      <body className="antialiased h-screen">
+      <body className="antialiased min-h-screen">
         <ClientLayout>
           {children}
         </ClientLayout>
