@@ -1,12 +1,11 @@
 "use client"
 
 import { useFormik } from "formik";
-import { contactSchema } from "../Schema";
+import { contactSchema } from "../../app/Schema";
 import emailjs from '@emailjs/browser';
 import { useState, useRef } from "react";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -94,7 +93,6 @@ const infoItemVariants = {
 
 const Contact = () => {
     const form = useRef();
-    const pathname = usePathname();
     const [loading, setLoading] = useState(false);
 
     const { values, errors, touched, handleChange, handleBlur, handleSubmit, setFieldValue, resetForm } = useFormik({
@@ -108,18 +106,29 @@ const Contact = () => {
         },
         validationSchema: contactSchema,
         onSubmit: async (values) => {
-            console.log(values,'-----------------values')
+            console.log(values, '-----------------values')
             setLoading(true);
             try {
                 const formEl = form.current;
-                await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formEl, {
-                    publicKey: PUBLIC_KEY,
-                });
-                toast.success("Your Message is Sent!", { position: "top-right" });
+                console.log(SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY, '-----------------formEl')
+                // await emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formEl, {
+                //     publicKey: PUBLIC_KEY,
+                // });
+                await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
+                    name: `${values.firstName} ${values.lastName}`,
+                    firstName: values.firstName,
+                    lastName: values.lastName,
+                    email: values.email,
+                    phone: values.phone,
+                    service: values.service,
+                    message: values.message,
+                }, PUBLIC_KEY);
+
+                toast.success("Your Message is Sent!");
                 resetForm();
             } catch (error) {
+                console.log(error, '-----------error message');
                 toast.error("Something went wrong!");
-                console.error(error.message,'-----------error message');
             } finally {
                 setLoading(false);
             }
@@ -128,7 +137,6 @@ const Contact = () => {
 
     return (
         <motion.section
-            key={pathname}
             variants={containerVariants}
             initial="hidden"
             animate="show"
@@ -137,65 +145,65 @@ const Contact = () => {
             <div className="container mx-auto">
                 <div className="flex flex-col xl:flex-row gap-6 xl:gap-8 items-center justify-center">
                     {/* Form */}
-                    <motion.div variants={sectionVariants} className="w-full xl:w-[54%] max-w-[760px] order-2 xl:order-0">
-                        <form ref={form} onSubmit={handleSubmit} className="flex flex-col gap-4 bg-[#27272c] rounded-xl xl:p-8 p-4 mx-auto">
-                            <h3 className="text-2xl md:text-3xl text-accent text-center xl:text-left">Let's work together</h3>
-                            <p className="text-white/60 text-sm text-center xl:text-left">Send me a message, and I’ll get back to you soon.</p>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
+                    <motion.div suppressHydrationWarning data-aos="fade-right" data-aos-duration="1000" variants={sectionVariants} className="flex flex-1 items-center justify-center w-full min-w-0 xl:w-[54%] order-2 xl:order-0">
+                        <form ref={form} onSubmit={handleSubmit} className="flex w-full min-w-0 max-w-full flex-col gap-4 bg-[#27272c] rounded-xl xl:p-8 p-4">
+                            <h3 className="text-[clamp(1.125rem,2.5vw+0.65rem,1.875rem)] text-accent text-center xl:text-left leading-tight">Let's work together</h3>
+                            <p className="text-white/60 text-[clamp(0.75rem,1.1vw+0.6rem,0.875rem)] text-center xl:text-left leading-snug">Send me a message, and I’ll get back to you soon.</p>
+                            <div className="grid w-full min-w-0 grid-cols-1 gap-4 md:grid-cols-[repeat(2,minmax(0,1fr))]">
+                                <div className="w-full min-w-0">
                                     <Input
                                         type="text"
                                         name="firstName"
                                         placeholder="First Name"
-                                        className="h-11 px-3 py-2 text-sm"
+                                        className="h-11 w-full min-w-0 px-3 py-2 text-[clamp(0.75rem,0.9vw+0.65rem,0.875rem)]"
                                         value={values.firstName}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                     />
                                     {errors.firstName && touched.firstName && (
-                                        <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
+                                        <p className="text-red-500 text-[clamp(0.6875rem,0.8vw+0.55rem,0.8125rem)] mt-1">{errors.firstName}</p>
                                     )}
                                 </div>
-                                <div>
+                                <div className="w-full min-w-0">
                                     <Input
                                         type="text"
                                         name="lastName"
                                         placeholder="Last Name"
-                                        className="h-11 px-3 py-2 text-sm"
+                                        className="h-11 w-full min-w-0 px-3 py-2 text-[clamp(0.75rem,0.9vw+0.65rem,0.875rem)]"
                                         value={values.lastName}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                     />
                                     {errors.lastName && touched.lastName && (
-                                        <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
+                                        <p className="text-red-500 text-[clamp(0.6875rem,0.8vw+0.55rem,0.8125rem)] mt-1">{errors.lastName}</p>
                                     )}
                                 </div>
-                                <div>
+                                <div className="w-full min-w-0">
                                     <Input
                                         type="email"
                                         name="email"
                                         placeholder="Email address"
-                                        className="h-11 px-3 py-2 text-sm"
+                                        className="h-11 w-full min-w-0 px-3 py-2 text-[clamp(0.75rem,0.9vw+0.65rem,0.875rem)]"
                                         value={values.email}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                     />
                                     {errors.email && touched.email && (
-                                        <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                                        <p className="text-red-500 text-[clamp(0.6875rem,0.8vw+0.55rem,0.8125rem)] mt-1">{errors.email}</p>
                                     )}
                                 </div>
-                                <div>
+                                <div className="w-full min-w-0">
                                     <Input
                                         type="text"
                                         name="phone"
                                         placeholder="Phone number"
-                                        className="h-11 px-3 py-2 text-sm"
+                                        className="h-11 w-full min-w-0 px-3 py-2 text-[clamp(0.75rem,0.9vw+0.65rem,0.875rem)]"
                                         value={values.phone}
                                         onChange={handleChange}
                                         onBlur={handleBlur}
                                     />
                                     {errors.phone && touched.phone && (
-                                        <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                                        <p className="text-red-500 text-[clamp(0.6875rem,0.8vw+0.55rem,0.8125rem)] mt-1">{errors.phone}</p>
                                     )}
                                 </div>
                             </div>
@@ -204,7 +212,7 @@ const Contact = () => {
                                 value={values.service}
                                 onValueChange={(val) => setFieldValue("service", val)}
                             >
-                                <SelectTrigger className="w-full h-11 px-3 py-2 text-sm">
+                                <SelectTrigger className="h-11 w-full min-w-0 px-3 py-2 text-[clamp(0.75rem,0.9vw+0.65rem,0.875rem)]">
                                     <SelectValue placeholder="Select a Service" />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -217,44 +225,46 @@ const Contact = () => {
                                 </SelectContent>
                             </Select>
                             {errors.service && touched.service && (
-                                <p className="text-red-500 text-sm mt-1">{errors.service}</p>
+                                <p className="text-red-500 text-[clamp(0.6875rem,0.8vw+0.55rem,0.8125rem)] mt-1">{errors.service}</p>
                             )}
 
-                            <div>
+                            <div className="w-full min-w-0">
                                 <Textarea
                                     name="message"
                                     placeholder="Type your message here."
-                                    className="h-[130px] px-3 py-2 text-sm"
+                                    className="h-[clamp(6.5rem,22vw,8.125rem)] min-h-26 w-full min-w-0 px-3 py-2 text-[clamp(0.75rem,0.9vw+0.65rem,0.875rem)]"
                                     value={values.message}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                 />
                                 {errors.message && touched.message && (
-                                    <p className="text-red-500 text-sm mt-1">{errors.message}</p>
+                                    <p className="text-red-500 text-[clamp(0.6875rem,0.8vw+0.55rem,0.8125rem)] mt-1">{errors.message}</p>
                                 )}
                             </div>
 
-                            <Button type="submit" disabled={loading} className="max-w-36 h-10 text-sm">
+                            <Button type="submit" disabled={loading} className="max-w-36 h-10 text-[clamp(0.75rem,0.9vw+0.65rem,0.875rem)]">
                                 {loading ? "Sending..." : "Send Message"}
                             </Button>
                         </form>
                     </motion.div>
 
                     {/* Contact Info */}
-                    <motion.div variants={sectionVariants} className="flex flex-1 items-center justify-center order-1 xl:order-0 mb-8 xl:mb-0 w-full">
-                        <motion.ul variants={infoListVariants} className="flex flex-col gap-8">
-                            {info.map((item, i) => (
-                                <motion.li variants={infoItemVariants} key={i} className="flex items-center justify-center gap-4 text-center xl:text-left">
-                                    <div className="w-[52px] h-[52px] xl:w-[72px] xl:h-[72px] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
-                                        <div className="text-[28px]">{item.icon}</div>
-                                    </div>
-                                    <div className="flex-1">
-                                        <p className="text-white/60">{item.title}</p>
-                                        <h3 className="text-xl">{item.description}</h3>
-                                    </div>
-                                </motion.li>
-                            ))}
-                        </motion.ul>
+                    <motion.div suppressHydrationWarning data-aos="fade-left" data-aos-duration="1000" variants={sectionVariants} className="flex flex-1 items-center justify-center order-1 xl:order-0 mb-8 xl:mb-0 w-full min-w-0 px-1 ">
+                        <div>
+                            <motion.ul variants={infoListVariants} className="flex flex-col gap-[clamp(1.25rem,4vw,2rem)] w-full max-w-full">
+                                {info.map((item, i) => (
+                                    <motion.li variants={infoItemVariants} key={i} className="flex items-center justify-center gap-[clamp(0.75rem,2.5vw,1rem)] text-center xl:text-left w-full min-w-0">
+                                        <div className="shrink-0 w-[clamp(2.75rem,10vw,4.5rem)] h-[clamp(2.75rem,10vw,4.5rem)] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
+                                            <div className="text-[clamp(1.125rem,3.5vw+0.35rem,1.75rem)]">{item.icon}</div>
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                            <p className="text-white/60 text-[clamp(0.6875rem,1vw+0.55rem,0.875rem)]">{item.title}</p>
+                                            <h3 className="text-[clamp(0.875rem,1.8vw+0.55rem,1.25rem)] font-semibold leading-snug wrap-break-word">{item.description}</h3>
+                                        </div>
+                                    </motion.li>
+                                ))}
+                            </motion.ul>
+                        </div>
                     </motion.div>
                 </div>
             </div>

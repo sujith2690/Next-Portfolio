@@ -151,4 +151,22 @@
   .group:hover .text-outline {
     -webkit-text-stroke: 1px #00ff99;
   }
+
+  .work-desc-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #00ff99 transparent;
+  }
+
+  .work-desc-scroll::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .work-desc-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .work-desc-scroll::-webkit-scrollbar-thumb {
+    background-color: #00ff99;
+    border-radius: 999px;
+  }
 }

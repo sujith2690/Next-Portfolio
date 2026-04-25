@@ -3,22 +3,30 @@ import {
     Sheet,
     SheetContent,
     SheetTrigger,
-    SheetTitle, // ✅ Import this
+    SheetTitle,
+    SheetClose,
 } from '@/components/ui/sheet'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import { CiMenuFries } from 'react-icons/ci'
+import { Link as ScrollLink } from 'react-scroll'
+import { usePathname, useRouter } from 'next/navigation'
 
 const Links = [
-    { name: 'home', path: '/' },
-    { name: 'services', path: '/services' },
-    { name: 'resume', path: '/resume' },
-    { name: 'work', path: '/work' },
-    { name: 'contact', path: '/contact' },
+    { name: "home", id: "home" },
+    { name: "resume", id: "resume" },
+    { name: "work", id: "work" },
+    { name: "contact", id: "contact" },
 ]
 
 const MobileNav = () => {
-    const pathName = usePathname()
+    const pathname = usePathname()
+    const router = useRouter()
+
+    const handleNavigateIfNeeded = (id) => () => {
+        if (pathname !== "/") {
+            router.push(`/?scrollTo=${id}`)
+        }
+    }
 
     return (
         <Sheet>
@@ -27,27 +35,34 @@ const MobileNav = () => {
             </SheetTrigger>
 
             <SheetContent className="flex flex-col">
-                {/* ✅ Required for accessibility */}
                 <SheetTitle className="sr-only">Mobile navigation menu</SheetTitle>
 
                 <div className='h-full flex flex-col items-center justify-center sm:gap-40 gap-20 '>
                     <div className="text-center text-2xl">
-                        <Link href={'/'}>
-                            <h1 className="text-4xl font-semibold">
-                                SJ <span className="text-accent">.</span>
-                            </h1>
-                        </Link>
+                        <SheetClose asChild>
+                            <Link href="/">
+                                <h1 className="text-4xl font-semibold">
+                                    SJ <span className="text-accent">.</span>
+                               </h1>
+                            </Link>
+                        </SheetClose>
                     </div>
                     <nav className="flex flex-col justify-center items-center gap-8">
                         {Links.map((link, i) => (
-                            <Link
-                                href={link.path}
-                                key={i}
-                                className={`${link.path === pathName && 'text-accent border-b-2 border-accent'
-                                    } text-xl capitalize hover:text-accent transition-all`}
-                            >
-                                {link.name}
-                            </Link>
+                            <SheetClose key={i} asChild>
+                                <ScrollLink
+                                    to={link.id}
+                                    smooth
+                                    duration={500}
+                                    spy
+                                    offset={-96}
+                                    activeClass="text-accent border-b-2 border-accent"
+                                    onClick={handleNavigateIfNeeded(link.id)}
+                                    className="cursor-pointer text-xl capitalize hover:text-accent transition-all"
+                                >
+                                    {link.name}
+                                </ScrollLink>
+                            </SheetClose>
                         ))}
                     </nav>
                 </div>

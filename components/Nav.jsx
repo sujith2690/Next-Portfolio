@@ -1,45 +1,41 @@
 'use client'
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { Link as ScrollLink } from "react-scroll"
+import { usePathname, useRouter } from "next/navigation"
 
 const Links = [
-    {
-        name: 'home',
-        path: '/'
-    },
-    {
-        name: 'services',
-        path: '/services'
-    },
-    {
-        name: 'resume',
-        path: '/resume'
-    },
-    {
-        name: 'work',
-        path: '/work'
-    },
-    {
-        name: 'contact',
-        path: '/contact'
-    },
+    { name: "home", id: "home" },
+    { name: "resume", id: "resume" },
+    { name: "work", id: "work" },
+    { name: "contact", id: "contact" },
 ]
 const Nav = () => {
-    const pathName = usePathname();
-    console.log(pathName, '-------------pathName')
+    const pathname = usePathname()
+    const router = useRouter()
+
+    const handleNavigateIfNeeded = (id) => () => {
+        if (pathname !== "/") {
+            router.push(`/?scrollTo=${id}`)
+        }
+    }
+
     return (
         <nav className="flex gap-8 items-center">
             {
-                Links.map((link, i) => {
-                    return (
-                        <Link key={i} href={link.path}
-                            className={`${link.path == pathName &&
-                                "text-accent border-b-2 border-accent"} capitalize font-medium hover:text-accent transition-all`}
-                        >
-                            {link.name}
-                        </Link>
-                    )
-                })
+                Links.map((link, i) => (
+                    <ScrollLink
+                        key={i}
+                        to={link.id}
+                        smooth
+                        duration={500}
+                        spy
+                        offset={-96}
+                        activeClass="text-accent border-b-2 border-accent"
+                        onClick={handleNavigateIfNeeded(link.id)}
+                        className="cursor-pointer capitalize font-medium hover:text-accent transition-all"
+                    >
+                        {link.name}
+                    </ScrollLink>
+                ))
             }
         </nav>
     )
