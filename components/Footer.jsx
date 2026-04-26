@@ -7,7 +7,7 @@ import { scroller } from "react-scroll"
 const quickLinks = [
   { name: "Home", id: "home" },
   { name: "Resume", id: "resume" },
-  { name: "Work", id: "work" },
+  { name: "Portfolio", id: "portfolio" },
   { name: "Contact", id: "contact" },
 ]
 

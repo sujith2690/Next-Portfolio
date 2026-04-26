@@ -11,7 +11,7 @@ import { scroller } from "react-scroll"
 const allSections = [
   { id: "home", component: HomeSection },
   { id: "resume", component: ResumeSection },
-  { id: "work", component: WorkSection },
+  { id: "portfolio", component: WorkSection },
   { id: "contact", component: ContactSection },
 ]
 

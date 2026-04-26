@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation"
 const Links = [
     { name: "home", id: "home" },
     { name: "resume", id: "resume" },
-    { name: "work", id: "work" },
+    { name: "portfolio", id: "portfolio" },
     { name: "contact", id: "contact" },
 ]
 const Nav = () => {

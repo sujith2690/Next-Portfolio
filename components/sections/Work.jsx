@@ -23,7 +23,7 @@ const Work = ({ filterCategory }) => {
         <section className="min-h-[80vh] flex flex-col justify-center py-8 xl:py-3">
             <div className="container mx-auto">
                 <div suppressHydrationWarning data-aos="fade-down" data-aos-duration="1000" className="mx-auto w-full max-w-[1180px] mb-5 sm:mb-7">
-                    <h2 className="text-2xl sm:text-3xl xl:text-4xl font-bold">Projects</h2>
+                    <h2 className="text-2xl sm:text-3xl xl:text-4xl font-bold">Portfolio</h2>
                     <p className="text-white/60 text-xs sm:text-sm mt-1 max-w-[68ch]">
                         A curated selection of projects showcasing my work across full-stack development, UI/UX, and real-world integrations. Click any project to view details.
                     </p>

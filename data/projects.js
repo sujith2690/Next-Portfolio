@@ -70,7 +70,7 @@ export const PROJECTS = [
     title: "Restaurant website",
     description:
       "A responsive restaurant landing page with modern UI sections and smooth navigation, built to showcase a clean frontend layout and styling.",
-    stack: [{ name: "React" }, { name: "Tailwind.css" },{ name: "JavaScript" }],
+    stack: [{ name: "React" }, { name: "Tailwind.css" }, { name: "JavaScript" }],
     image: "/assets/work/HungerEats.png",
     live: "https://hungereats.netlify.app/",
     github: "https://github.com/sujith2690/Restaurant_Website",
@@ -80,10 +80,20 @@ export const PROJECTS = [
     title: "Auth AI – AI Company Service Website",
     description:
       "A service/landing website for an AI-based company, built with a modern UI and responsive layout to present product value, features, and CTAs.",
-    stack: [{ name: "React" }, { name: "Tailwind.css" },{ name: "JavaScript" },{ name: "AOS Scroll Animation" }],
+    stack: [{ name: "React" }, { name: "Tailwind.css" }, { name: "JavaScript" }, { name: "AOS Scroll Animation" }],
     image: "/assets/work/auth-ai.png",
     live: "https://auth-ai-rho.vercel.app/",
     github: "https://github.com/sujith2690/Auth-AI",
+  },
+  {
+    category: "frontend",
+    title: "Product Catelog",
+    description:
+      "Browse products like a premium showcase.Explore curated collection of high-performance vehicles, cutting-edge electronics, and premium mobile devices, styled with sleek dark glassmorphism.",
+    stack: [{ name: "React" }, { name: "Tailwind.css" }, { name: "JavaScript" }, { name: "AOS Scroll Animation" }],
+    image: "/assets/work/OmniCatelog.png",
+    live: "https://product-catelog-eight.vercel.app/",
+    github: "https://github.com/sujith2690/Product-catelog",
   },
   {
     category: "frontend",
