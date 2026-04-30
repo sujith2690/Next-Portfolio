@@ -5,6 +5,7 @@ import * as Dialog from "@radix-ui/react-dialog"
 import { BsArrowUpRight, BsGithub } from "react-icons/bs"
 import { IoMdClose } from "react-icons/io"
 import { PROJECTS } from "@/data/projects"
+import { motion } from "framer-motion"
 
 const Work = ({ filterCategory }) => {
     const projects = useMemo(() => {
@@ -20,14 +21,20 @@ const Work = ({ filterCategory }) => {
     }
 
     return (
-        <section className="min-h-[80vh] flex flex-col justify-center py-8 xl:py-3">
+        <section className="min-h-[80vh] py-14 sm:py-16">
             <div className="container mx-auto">
-                <div suppressHydrationWarning data-aos="fade-down" data-aos-duration="1000" className="mx-auto w-full max-w-[1180px] mb-5 sm:mb-7">
-                    <h2 className="text-2xl sm:text-3xl xl:text-4xl font-bold">Portfolio</h2>
-                    <p className="text-white/60 text-xs sm:text-sm mt-1 max-w-[68ch]">
-                        A curated selection of projects showcasing my work across full-stack development, UI/UX, and real-world integrations. Click any project to view details.
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.5 }}
+                    className="mx-auto mb-7 w-full max-w-[1180px]"
+                >
+                    <h2 className="text-3xl font-semibold sm:text-4xl">Selected Projects</h2>
+                    <p className="mt-2 max-w-3xl text-sm text-white/65 sm:text-base">
+                        A recruiter-focused showcase of production-ready work across full-stack systems, UI engineering, and business-driven product experiences.
                     </p>
-                </div>
+                </motion.div>
                 {projects.length === 0 ? (
                     <div className="mx-auto max-w-[1180px] rounded-2xl border border-white/10 bg-white/5 p-4 sm:p-6 text-center">
                         <p className="text-white/80 text-sm sm:text-base font-semibold">No projects found</p>
@@ -36,17 +43,13 @@ const Work = ({ filterCategory }) => {
                         </p>
                     </div>
                 ) : (
-                    <div className="mx-auto grid w-full max-w-[1180px] grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5">
+                    <div className="mx-auto grid w-full max-w-[1180px] grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 xl:grid-cols-3">
                         {projects.map((p, i) => (
                             <button
-                                suppressHydrationWarning
                                 key={`${p.title}-${i}`}
                                 type="button"
                                 onClick={() => openProject(p)}
-                                data-aos="zoom-in-up"
-                                data-aos-duration="600"
-                                data-aos-delay={i * 90}
-                                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 text-left transition-all duration-300 hover:border-accent/60 hover:scale-[1.015] hover:shadow-xl hover:shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
+                                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] text-left backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-accent/60 hover:shadow-xl hover:shadow-black/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
                             >
                                 <div className="relative aspect-[16/10] w-full">
                                     <img
@@ -58,7 +61,7 @@ const Work = ({ filterCategory }) => {
                                     />
                                     {/* category badge */}
                                     <div className="absolute right-3 top-3 z-10">
-                                        <span className="inline-flex items-center rounded-full bg-primary/70 backdrop-blur px-2.5 py-1 text-xs font-semibold capitalize text-white border border-white/15">
+                                        <span className="inline-flex items-center rounded-full border border-white/15 bg-primary/75 px-2.5 py-1 text-xs font-semibold capitalize text-white backdrop-blur">
                                             {p.category}
                                         </span>
                                     </div>
@@ -68,16 +71,19 @@ const Work = ({ filterCategory }) => {
                                         opacity-100
                                         md:opacity-0 md:group-hover:opacity-100"
                                     >
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent" />
 
                                         <div
                                             className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 transition-all duration-300
                                             translate-y-0 opacity-100
                                             md:translate-y-2 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100"
                                         >
-                                            <h3 className="text-sm sm:text-base font-semibold leading-snug text-white line-clamp-2">
+                                            <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-white sm:text-base">
                                                 {p.title}
                                             </h3>
+                                            <p className="mt-1 line-clamp-2 text-xs text-white/70">
+                                                {p.description}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
@@ -89,7 +95,7 @@ const Work = ({ filterCategory }) => {
                 <Dialog.Root open={open} onOpenChange={setOpen}>
                     <Dialog.Portal>
                         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm" />
-                        <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[calc(100vw-24px)] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-white/10 bg-primary p-4 sm:p-6 shadow-2xl shadow-black/40 focus:outline-none">
+                        <Dialog.Content className="fixed left-1/2 top-1/2 z-50 w-[calc(100vw-24px)] max-w-3xl -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-white/10 bg-primary p-4 shadow-2xl shadow-black/40 focus:outline-none sm:p-6">
                             <div className="flex items-start justify-between gap-4">
                                 <div className="min-w-0">
                                     <Dialog.Title className="text-sm sm:text-lg font-semibold text-white leading-snug">

@@ -14,18 +14,18 @@ export const scrollToSection = (id, { behavior = "smooth" } = {}) => {
 
 const Header = () => {
     return (
-        <header className="sticky top-0 z-50 p-2 text-white bg-primary/90 backdrop-blur-md ">
-            <div className="container mx-auto flex justify-between items-center">
+        <header className="sticky top-0 z-50 border-b border-white/10 bg-primary/70 px-2 py-3 text-white backdrop-blur-2xl">
+            <div className="container mx-auto flex items-center justify-between">
                 {/* logo */}
                 <Link href="/" onClick={() => scrollToSection("home", { behavior: "smooth" })}>
-                    <h1 className="text-4xl font-semibold">
+                    <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
                         SJ <span className="text-accent">.</span>
                     </h1>
                 </Link>
                 {/* { Desktop Nav and hire me button } */}
-                <div className="hidden xl:flex items-center gap-8">
+                <div className="hidden items-center gap-6 xl:flex">
                     <Nav />
-                    <Button onClick={() => scrollToSection("contact", { behavior: "smooth" })}>
+                    <Button className="shadow-lg shadow-accent/15" onClick={() => scrollToSection("contact", { behavior: "smooth" })}>
                         Hire Me
                     </Button>
                 </div>

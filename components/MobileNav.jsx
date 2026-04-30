@@ -10,13 +10,7 @@ import Link from 'next/link'
 import { CiMenuFries } from 'react-icons/ci'
 import { Link as ScrollLink } from 'react-scroll'
 import { usePathname, useRouter } from 'next/navigation'
-
-const Links = [
-    { name: "home", id: "home" },
-    { name: "resume", id: "resume" },
-    { name: "portfolio", id: "portfolio" },
-    { name: "contact", id: "contact" },
-]
+import { NAV_LINKS } from './Nav'
 
 const MobileNav = () => {
     const pathname = usePathname()
@@ -30,25 +24,25 @@ const MobileNav = () => {
 
     return (
         <Sheet>
-            <SheetTrigger className="flex justify-center items-center">
-                <CiMenuFries className="text-[32px] text-accent" />
+            <SheetTrigger className="flex items-center justify-center rounded-full border border-white/20 bg-white/5 p-2.5 backdrop-blur-xl transition hover:bg-white/10">
+                <CiMenuFries className="text-[28px] text-accent" />
             </SheetTrigger>
 
-            <SheetContent className="flex flex-col">
+            <SheetContent className="flex flex-col border-l-white/10 bg-primary/95 backdrop-blur-2xl">
                 <SheetTitle className="sr-only">Mobile navigation menu</SheetTitle>
 
-                <div className='h-full flex flex-col items-center justify-center sm:gap-40 gap-20 '>
+                <div className='flex h-full flex-col items-center justify-center gap-16'>
                     <div className="text-center text-2xl">
                         <SheetClose asChild>
                             <Link href="/">
-                                <h1 className="text-4xl font-semibold">
+                                <h1 className="text-4xl font-semibold tracking-tight">
                                     SJ <span className="text-accent">.</span>
                                </h1>
                             </Link>
                         </SheetClose>
                     </div>
-                    <nav className="flex flex-col justify-center items-center gap-8">
-                        {Links.map((link, i) => (
+                    <nav className="flex w-full max-w-xs flex-col items-center gap-3">
+                        {NAV_LINKS.map((link, i) => (
                             <SheetClose key={i} asChild>
                                 <ScrollLink
                                     to={link.id}
@@ -56,9 +50,9 @@ const MobileNav = () => {
                                     duration={500}
                                     spy
                                     offset={-96}
-                                    activeClass="text-accent border-b-2 border-accent"
+                                    activeClass="!bg-accent !text-primary"
                                     onClick={handleNavigateIfNeeded(link.id)}
-                                    className="cursor-pointer text-xl capitalize hover:text-accent transition-all"
+                                    className="w-full cursor-pointer rounded-full border border-white/10 px-5 py-3 text-center text-lg capitalize text-white/85 transition-all hover:border-accent/60 hover:bg-white/10"
                                 >
                                     {link.name}
                                 </ScrollLink>

@@ -139,16 +139,23 @@ const Contact = () => {
         <motion.section
             variants={containerVariants}
             initial="hidden"
-            animate="show"
-            className="py-4 xl:py-6"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
+            className="py-14 sm:py-16"
         >
             <div className="container mx-auto">
-                <div className="flex flex-col xl:flex-row gap-6 xl:gap-8 items-center justify-center">
+                <div className="mb-8">
+                    <h2 className="text-3xl font-semibold sm:text-4xl">Contact</h2>
+                    <p className="mt-2 max-w-3xl text-sm text-white/65 sm:text-base">
+                        Looking for a developer who can own both product quality and engineering excellence? Let’s build something users remember.
+                    </p>
+                </div>
+                <div className="flex flex-col items-stretch gap-6 xl:flex-row xl:gap-8">
                     {/* Form */}
-                    <motion.div suppressHydrationWarning data-aos="fade-right" data-aos-duration="1000" variants={sectionVariants} className="flex flex-1 items-center justify-center w-full min-w-0 xl:w-[54%] order-2 xl:order-0">
-                        <form ref={form} onSubmit={handleSubmit} className="flex w-full min-w-0 max-w-full flex-col gap-4 bg-[#27272c] rounded-xl xl:p-8 p-4">
-                            <h3 className="text-[clamp(1.125rem,2.5vw+0.65rem,1.875rem)] text-accent text-center xl:text-left leading-tight">Let's work together</h3>
-                            <p className="text-white/60 text-[clamp(0.75rem,1.1vw+0.6rem,0.875rem)] text-center xl:text-left leading-snug">Send me a message, and I’ll get back to you soon.</p>
+                    <motion.div variants={sectionVariants} className="order-2 flex w-full min-w-0 flex-1 items-center justify-center xl:order-1 xl:w-[58%]">
+                        <form ref={form} onSubmit={handleSubmit} className="flex w-full min-w-0 max-w-full flex-col gap-4 rounded-3xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-xl sm:p-6 xl:p-8">
+                            <h3 className="text-center text-2xl leading-tight text-accent xl:text-left">Let&apos;s work together</h3>
+                            <p className="text-center text-sm leading-snug text-white/60 xl:text-left">Share your idea, timeline, and goals. I will respond with a clear plan.</p>
                             <div className="grid w-full min-w-0 grid-cols-1 gap-4 md:grid-cols-[repeat(2,minmax(0,1fr))]">
                                 <div className="w-full min-w-0">
                                     <Input
@@ -242,19 +249,19 @@ const Contact = () => {
                                 )}
                             </div>
 
-                            <Button type="submit" disabled={loading} className="max-w-36 h-10 text-[clamp(0.75rem,0.9vw+0.65rem,0.875rem)]">
+                            <Button type="submit" disabled={loading} className="h-11 max-w-40 text-sm">
                                 {loading ? "Sending..." : "Send Message"}
                             </Button>
                         </form>
                     </motion.div>
 
                     {/* Contact Info */}
-                    <motion.div suppressHydrationWarning data-aos="fade-left" data-aos-duration="1000" variants={sectionVariants} className="flex flex-1 items-center justify-center order-1 xl:order-0 mb-8 xl:mb-0 w-full min-w-0 px-1 ">
-                        <div>
+                    <motion.div variants={sectionVariants} className="order-1 mb-2 flex w-full min-w-0 flex-1 items-center justify-center rounded-3xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur-xl sm:p-7 xl:order-2 xl:mb-0">
+                        <div className="w-full">
                             <motion.ul variants={infoListVariants} className="flex flex-col gap-[clamp(1.25rem,4vw,2rem)] w-full max-w-full">
                                 {info.map((item, i) => (
-                                    <motion.li variants={infoItemVariants} key={i} className="flex items-center justify-center gap-[clamp(0.75rem,2.5vw,1rem)] text-center xl:text-left w-full min-w-0">
-                                        <div className="shrink-0 w-[clamp(2.75rem,10vw,4.5rem)] h-[clamp(2.75rem,10vw,4.5rem)] bg-[#27272c] text-accent rounded-md flex items-center justify-center">
+                                    <motion.li variants={infoItemVariants} key={i} className="flex w-full min-w-0 items-center justify-center gap-[clamp(0.75rem,2.5vw,1rem)] text-center xl:text-left">
+                                        <div className="flex h-[clamp(2.75rem,10vw,4.5rem)] w-[clamp(2.75rem,10vw,4.5rem)] shrink-0 items-center justify-center rounded-xl border border-white/10 bg-primary/70 text-accent">
                                             <div className="text-[clamp(1.125rem,3.5vw+0.35rem,1.75rem)]">{item.icon}</div>
                                         </div>
                                         <div className="flex-1 min-w-0">

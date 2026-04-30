@@ -19,17 +19,17 @@ const status = [
 const Status = () => {
 
     return (
-        <section className="pt-2 pb-4 xl:pt-0 xl:pb-0">
+        <section className="pb-4 pt-2 xl:pb-0 xl:pt-0">
             <div className="container mx-auto">
-                <div className="flex flex-wrap gap-6 max-w-[80vw] mx-auto xl:max-w-none ">
+                <div className="mx-auto grid max-w-6xl grid-cols-2 gap-3 lg:grid-cols-4">
                     {
                         status.map((item, i) => {
                             return (
-                                <div className="flex-1 flex gap-4 items-center justify-center xl:justify-start" key={i}>
-                                    <span className="text-4xl xl:text-6xl font-extrabold">
+                                <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur-xl" key={i}>
+                                    <span className="text-2xl font-bold text-accent xl:text-3xl">
                                         {item.num}
                                     </span>
-                                    <p className={`${item.text.length < 15 ? "max-w-[100px] " : "max-w-[150px]"} leading-snug text-white/80`} >
+                                    <p className="mt-2 max-w-[160px] text-sm leading-snug text-white/70">
                                         {item.text}
                                     </p>
                                 </div>
